@@ -1,17 +1,40 @@
 ﻿@inherits LayoutComponentBase
 
-<div class="page">
-    <div class="sidebar">
-        <NavMenu />
+<div class="layout-wrapper layout-content-navbar">
+    <div class="layout-container">
+        <!-- Menu -->
+
+        <SideMenu></SideMenu>
+        <!-- / Menu -->
+        <!-- Layout container -->
+        <div class="layout-page">
+            <!-- Navbar -->
+
+            <NavBar></NavBar>
+
+            <!-- / Navbar -->
+            <!-- Content wrapper -->
+            <div class="content-wrapper">
+                <!-- Content -->
+
+                <div class="container-xxl flex-grow-1 container-p-y">
+                    @Body
+                </div>
+                <!-- / Content -->
+                <!-- Footer -->
+                <Footer></Footer>
+                <!-- / Footer -->
+
+                <div class="content-backdrop fade"></div>
+            </div>
+            <!-- Content wrapper -->
+        </div>
+        <!-- / Layout page -->
     </div>
 
-    <main>
-        <div class="top-row px-4">
-            <a href="https://docs.microsoft.com/aspnet/" target="_blank">About</a>
-        </div>
+    <!-- Overlay -->
+    <div class="layout-overlay layout-menu-toggle"></div>
 
-        <article class="content px-4">
-            @Body
-        </article>
-    </main>
+    <!-- Drag Target Area To SlideIn Menu On Small Screens -->
+    <div class="drag-target"></div>
 </div>
