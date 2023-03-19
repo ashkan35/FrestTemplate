@@ -1,12 +1,12 @@
-﻿function SwalFire(text,title,icon,buttonClass,buttonText,buttonsStyling=false) {
+﻿function SwalFire(icon,title,text,buttonClass,buttonText) {
     Swal.fire({
-        title: 'خطا!',
-        text: ' شما روی دکمه کلیک کردید!',
-        icon: 'error',
+        title: title,
+        text: text,
+        icon: icon,
         customClass: {
-            confirmButton: 'btn btn-primary'
+            confirmButton: buttonClass
         },
-        confirmButtonText: 'باشه',
+        confirmButtonText: buttonText,
         buttonsStyling: false
     });
 } 
