@@ -16,22 +16,13 @@
                 </div>
             </div>
         </div>
-        <form id="dropzone-basic" action="/postss" class="dropzone dz-clickable"></form>
-        <form id="dropzone-multi" action="/postss" class="dropzone dz-clickable"></form>
+
 
     </div>
 
 </div>
 
+@code{
 
-
-@code {
-
-
-
-    protected override async Task OnAfterRenderAsync(bool firstRender)
-    {
-       await _Js.InvokeVoidAsync("import", "/assets/vendor/libs/dropzone/dropzone.js");
-       await _Js.InvokeVoidAsync("import", "/Js/dropzone.js");
-    }
 }
+
