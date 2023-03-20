@@ -15,8 +15,4 @@
     <Folder Include="wwwroot\assets\vendor\libs\dropzone\" />
   </ItemGroup>
 
-  <ItemGroup>
-    <None Include="wwwroot\Js\loadScript.js" />
-  </ItemGroup>
-
 </Project>
