@@ -1,0 +1,42 @@
+﻿@page "/Admin/file-upload-2"
+@using System.Globalization
+@inject HttpClient Client
+<h1>Welcome to C# Corner</h1>
+<p>Learn how to upload a file from Blazor WebAssembly to the an ASP.NET Core Web API with progress</p>
+
+<div class="row">
+    <div class="col-4">
+        <div class="form-group">
+            <label>File</label>
+            <InputFile OnChange="OnChooseFile" />
+            <p>0KB / 9,500KB</p>
+        </div>
+        <button onclick="SubmitFileAsync" class="btn btn-success btn-block m-1">Upload</button>
+    </div>
+</div>
+@code{
+    private long _uploaded = 0;
+    private double _percentage = 0;
+    public async Task OnChooseFile(InputFileChangeEventArgs e)
+    {
+
+        // Get the selected file
+        var file = e.File;
+        var stream = file.OpenReadStream(1024 * 1024 * 1024);
+        // Check if the file is null then return from the method
+        var content = new MultipartFormDataContent();
+        // Add the streamContent with the name to the FormContent variable
+
+        var streamContent = new StreamContent(file.OpenReadStream(1024 * 1024 * 1024));
+
+
+        content.Add(streamContent, "file", e.File.Name);
+        content.Add(new StringContent("Ashkan"), "name");
+
+        // Submit the request
+        var response = await Client.PostAsync("http://localhost:36363/api/v1/File/TestFilePost", content);
+
+    }
+
+
+}
