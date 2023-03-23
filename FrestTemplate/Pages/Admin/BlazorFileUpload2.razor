@@ -8,35 +8,21 @@
     <div class="col-4">
         <div class="form-group">
             <label>File</label>
-            <InputFile OnChange="OnChooseFile" />
+            <ProgressiveInputFile @ref="InputFile" UploadUrl="http://localhost:36363/api/v1/File/PostSingleFile" ></ProgressiveInputFile>
             <p>0KB / 9,500KB</p>
         </div>
-        <button onclick="SubmitFileAsync" class="btn btn-success btn-block m-1">Upload</button>
+        <button @onclick="HandleUploadClick" class="btn btn-success btn-block m-1">Upload</button>
     </div>
 </div>
 @code{
-    private long _uploaded = 0;
-    private double _percentage = 0;
-    public async Task OnChooseFile(InputFileChangeEventArgs e)
+    private ProgressiveInputFile InputFile;
+    private async Task HandleUploadClick()
     {
 
-        // Get the selected file
-        var file = e.File;
-        var stream = file.OpenReadStream(1024 * 1024 * 1024);
-        // Check if the file is null then return from the method
-        var content = new MultipartFormDataContent();
-        // Add the streamContent with the name to the FormContent variable
-
-        var streamContent = new StreamContent(file.OpenReadStream(1024 * 1024 * 1024));
+        string accessToken = null;
 
 
-        content.Add(streamContent, "file", e.File.Name);
-        content.Add(new StringContent("Ashkan"), "name");
-
-        // Submit the request
-        var response = await Client.PostAsync("http://localhost:36363/api/v1/File/TestFilePost", content);
-
+        await InputFile.StartUploadAsync(accessToken);
     }
-
 
 }

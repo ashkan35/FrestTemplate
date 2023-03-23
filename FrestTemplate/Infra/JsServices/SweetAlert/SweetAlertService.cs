@@ -1,6 +1,6 @@
 ﻿using Microsoft.JSInterop;
 
-namespace FrestTemplate.Infradtructure.JsServices.SweetAlert;
+namespace FrestTemplate.Infra.JsServices.SweetAlert;
 
 public class SweetAlertService : ISweetAlertService
 {

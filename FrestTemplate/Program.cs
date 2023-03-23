@@ -1,6 +1,6 @@
 using FrestTemplate;
-using FrestTemplate.Infradtructure;
-using FrestTemplate.Infradtructure.JsServices.SweetAlert;
+using FrestTemplate.Infra.JsServices.SweetAlert;
+using FrestTemplate.Infra;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 

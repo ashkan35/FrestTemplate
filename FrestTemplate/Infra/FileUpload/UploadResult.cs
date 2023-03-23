@@ -1,4 +1,4 @@
-﻿namespace FrestTemplate.Infradtructure.FileUpload;
+﻿namespace FrestTemplate.Infra.FileUpload;
 
 public class UploadResult
 {

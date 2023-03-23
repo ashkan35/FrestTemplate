@@ -1,4 +1,4 @@
-﻿namespace FrestTemplate.Infradtructure.JsServices.SweetAlert;
+﻿namespace FrestTemplate.Infra.JsServices.SweetAlert;
 
     public enum SweetAlertType
     {
