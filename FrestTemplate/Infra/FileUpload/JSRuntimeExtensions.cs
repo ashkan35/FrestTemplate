@@ -4,7 +4,7 @@ using Havit.Blazor.Components.Web;
 using Microsoft.JSInterop;
 
 namespace FrestTemplate.Infra.FileUpload;
-public static class JSRuntimeExtensions
+public static class JsRuntimeExtensions
 {
     public static ValueTask<IJSObjectReference> ImportModuleAsync(this IJSRuntime jsRuntime, string modulePath, Assembly assemblyForVersionInfo = null)
     {
@@ -19,9 +19,7 @@ public static class JSRuntimeExtensions
 
     internal static ValueTask<IJSObjectReference> ImportHavitBlazorWebModuleAsync(this IJSRuntime jsRuntime, string moduleNameWithoutExtension)
     {
-        versionIdentifierHavitBlazorWeb ??= GetAssemblyVersionIdentifierForUri(typeof(DynamicElement).Assembly);
-
-        var path = "/Js/" + moduleNameWithoutExtension + ".js?v=" + versionIdentifierHavitBlazorWeb;
+        var path = "/Js/" + moduleNameWithoutExtension + ".js";
         return jsRuntime.InvokeAsync<IJSObjectReference>("import", path);
     }
     private static string versionIdentifierHavitBlazorWeb;

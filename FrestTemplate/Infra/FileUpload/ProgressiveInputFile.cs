@@ -114,7 +114,7 @@ public class ProgressiveInputFile : InputFile, IAsyncDisposable
 	public int FileCount { get; private set; }
 
 	private DotNetObjectReference<ProgressiveInputFile> dotnetObjectReference;
-	private IJSObjectReference _jsModule;
+	private IJSObjectReference? _jsModule;
 	private TaskCompletionSource<UploadCompletedEventArgs> uploadCompletedTaskCompletionSource;
 	private ConcurrentBag<FileUploadedEventArgs> filesUploaded;
 	private bool disposed;
@@ -146,8 +146,8 @@ public class ProgressiveInputFile : InputFile, IAsyncDisposable
 	/// </remarks>
 	public async Task StartUploadAsync(string accessToken = null)
 	{
-        //Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(UploadUrl), nameof(UploadUrl) + " has to be set.");
-        await EnsureJsModuleAsync();
+		//Contract.Requires<ArgumentException>(!String.IsNullOrWhiteSpace(UploadUrl), nameof(UploadUrl) + " has to be set.");
+		await EnsureJsModuleAsync();
 
         filesUploaded = new ConcurrentBag<FileUploadedEventArgs>();
 
