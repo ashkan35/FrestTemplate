@@ -6,7 +6,7 @@
 
 <div class="row">
 
-    <div class="col-md-4">
+    @*<div class="col-md-4">
         <div class="input-group">
             <button @ref="uploadButtonRefference" @onclick="HandleUploadClick" class="input-group-text bg-success mw-100">آپلود</button>
             <ProgressiveInputFile id="inputGroupFile01" class="form-control" OnUploadCompleted="UplodCompleted" OnProgress="HandleOnProgress" MaxFileSize=Int64.MaxValue  @ref="InputFile" UploadUrl="http://localhost:36363/api/v1/File/PostSingleFile" ></ProgressiveInputFile>
@@ -15,34 +15,34 @@
         <div class="progress mt-3">
             <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" style=@($"width: {progressPercent}%") aria-valuenow="@(progressPercent)" aria-valuemin="0" aria-valuemax="100"></div>
         </div>
-    </div>
+    </div>*@
 
 </div>
 @code{
-    private ProgressiveInputFile InputFile;
+    //private ProgressiveInputFile InputFile;
 
-    private int progressPercent = 0;
-    private ElementReference uploadButtonRefference;
-    private async Task HandleUploadClick()
-    {
+    //private int progressPercent = 0;
+    //private ElementReference uploadButtonRefference;
+    //private async Task HandleUploadClick()
+    //{
 
-        string accessToken = null;
-        await InputFile.StartUploadAsync(accessToken);
-    }
+    //    string accessToken = null;
+    //    await InputFile.StartUploadAsync(accessToken);
+    //}
 
-    private Task HandleOnProgress(UploadProgressEventArgs progress)
-    {
-        decimal prog = ((decimal)progress.UploadedBytes / progress.UploadSize) * 100;
-        progressPercent = (int)prog;
-        return Task.CompletedTask;
+    //private Task HandleOnProgress(UploadProgressEventArgs progress)
+    //{
+    //    decimal prog = ((decimal)progress.UploadedBytes / progress.UploadSize) * 100;
+    //    progressPercent = (int)prog;
+    //    return Task.CompletedTask;
 
-    }
-    private Task UplodCompleted(UploadCompletedEventArgs completedEvent)
-    {
-        
-        return Task.CompletedTask;
+    //}
+    //private Task UplodCompleted(UploadCompletedEventArgs completedEvent)
+    //{
 
-    }
-     
+    //    return Task.CompletedTask;
+
+    //}
+
 
 }
