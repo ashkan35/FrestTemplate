@@ -2,10 +2,11 @@
 using System.Diagnostics.Contracts;
 using System.Net;
 using System.Reflection;
+using FrestTemplate.Infra.JsServices;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Forms;
 using Microsoft.JSInterop;
- 
+
 
 namespace FrestTemplate.Infra.FileUpload;
 

@@ -1,9 +1,8 @@
 ﻿using System.Diagnostics.Contracts;
 using System.Reflection;
-using Havit.Blazor.Components.Web;
 using Microsoft.JSInterop;
 
-namespace FrestTemplate.Infra.FileUpload;
+namespace FrestTemplate.Infra.JsServices;
 public static class JsRuntimeExtensions
 {
     public static ValueTask<IJSObjectReference> ImportModuleAsync(this IJSRuntime jsRuntime, string modulePath, Assembly assemblyForVersionInfo = null)
