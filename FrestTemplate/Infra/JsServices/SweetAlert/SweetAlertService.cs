@@ -1,4 +1,5 @@
 ﻿using Microsoft.JSInterop;
+using System.Numerics;
 
 namespace FrestTemplate.Infra.JsServices.SweetAlert;
 
@@ -9,6 +10,7 @@ public class SweetAlertService : ISweetAlertService
     public SweetAlertService(IJSRuntime jSRuntime)
     {
         _jSRuntime = jSRuntime;
+        LoadScriptAndCss();
     }
     public Task NotificationWithButton(SweetAlertType type, string text)
     {
@@ -36,6 +38,13 @@ public class SweetAlertService : ISweetAlertService
         }
         return Task.CompletedTask;
         
+    }
+
+    private  Task LoadScriptAndCss()
+    {
+         _jSRuntime.InvokeVoidAsync("loadScript", "assets/vendor/libs/sweetalert2/sweetalert2.js");
+         _jSRuntime.InvokeVoidAsync("loadLink", "assets/vendor/libs/sweetalert2/sweetalert2.css");
+         return Task.CompletedTask;
     }
 }
 

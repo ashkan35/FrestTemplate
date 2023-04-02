@@ -1,0 +1,22 @@
+﻿@page "/Admin/SweetAlert"
+@inject ISweetAlertService _sweetAlert
+<h3>SweetAlert</h3>
+
+
+<PageTitle>Index</PageTitle>
+
+<h1 class="text-danger" id="ashkan">شایان</h1>
+
+Welcome to your new app.
+
+<SurveyPrompt Title="How is Blazor working for you?" />
+<button @onclick="ShowSwal" class="btn btn-success">swalSuccess</button>
+@code
+{
+    public async Task ShowSwal()
+    {
+
+        await _sweetAlert.NotificationWithButton(SweetAlertType.Success, "شما موفق شدید!");
+        //await _sweetAlert.NotificationWithButton(SweetAlertType.Success, "عملیات با موفقیت انجام شد", "عملیات موفقیت آمیز", "حله");
+    }
+}
