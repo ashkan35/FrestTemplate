@@ -1,4 +1,4 @@
-﻿@page "/Admin/GridTest"
+﻿@page "/TemplateComponents/GridTest"
 @using System.Globalization
 @using FrestTemplate.Infra.Grid
 <DataGrid TItem="CultureInfo"  Responsive="true" DataProvider="GetGridData" PageSize="10">
@@ -12,6 +12,7 @@
 
     private Task<GridDataProviderResult<CultureInfo>> GetGridData(GridDataProviderRequest<CultureInfo> request)
     {
+        
         // you usualy pass the data-request to your API/DataLayer and it returns just the few requested items (+ total count)
 
         var cultureInfos = CultureInfo.GetCultures(CultureTypes.AllCultures).ToList();

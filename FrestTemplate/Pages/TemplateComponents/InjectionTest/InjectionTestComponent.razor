@@ -1,0 +1,14 @@
+﻿@inject ITestInjectionService InjectionTestService
+<h3>InjectionTest</h3>
+<div>
+    <h1>component:the message from constructor is @_messageFromService</h1>
+</div>
+@code {
+    private string? _messageFromService;
+    protected override async Task OnInitializedAsync()
+    {
+        _messageFromService= await InjectionTestService.GetMessage();
+        await base.OnInitializedAsync();
+    }
+
+}

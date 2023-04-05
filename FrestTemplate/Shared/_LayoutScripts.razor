@@ -1,6 +1,6 @@
-﻿
+﻿@using Microsoft.AspNetCore.Components.WebAssembly.Hosting
 @inject IJSRuntime _js
-
+@inject IWebAssemblyHostEnvironment _env;
 @code{
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
@@ -8,7 +8,6 @@
         await _js.InvokeVoidAsync("loadScript", "assets/vendor/js/menu.js");
         await _js.InvokeVoidAsync("loadScript", "assets/js/main.js");
         await base.OnAfterRenderAsync(firstRender);
-
 
     }
 
