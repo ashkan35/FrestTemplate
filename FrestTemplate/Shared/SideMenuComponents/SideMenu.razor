@@ -1,4 +1,7 @@
-﻿<aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
+﻿@using System.Text
+@inject NavigationManager NavigationManager
+@inject IJSRuntime JsRuntime
+<aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
     <div class="app-brand demo">
         <a href="index.html" class="app-brand-link">
             <span class="app-brand-logo demo">
@@ -45,16 +48,16 @@
     <ul class="menu-inner py-1">
         <!-- Page -->
         <li class="menu-item">
-            <NavLink href="/" class="menu-link">
+            <a href="/" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div data-i18n="Page 1">صفحه 1</div>
-            </NavLink>
+            </a>
         </li>
         <li class="menu-item">
-            <NavLink href="/counter" class="menu-link">
+            <a href="/counter" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-detail"></i>
                 <div data-i18n="Page 2">صفحه 2</div>
-            </NavLink>
+            </a>
         </li>
         <li class="menu-item" style="">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
@@ -94,5 +97,38 @@
 </aside>
 
 @code {
+    protected override Task OnInitializedAsync()
+    {
+        NavigationManager.LocationChanged += (sender, args) =>
+        {
+            SetActiveMenu();
+            StateHasChanged();
+        };
+
+
+        return base.OnInitializedAsync();
+    }
+
+    protected override Task OnAfterRenderAsync(bool firstRender)
+    {
+        SetActiveMenu();
+        return base.OnAfterRenderAsync(firstRender);
+    }
+
+    private void SetActiveMenu()
+    {
+        var uri = new Uri(NavigationManager.Uri);
+        var segments = uri.Segments;
+        var sb = new StringBuilder();
+        foreach (var segment in segments)
+        {
+            sb.Append(segment);
+        }
+
+        JsRuntime.InvokeVoidAsync("setActiveMenu", sb.ToString());
+    }
+
+  
+
 
 }
